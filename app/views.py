@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 from django.shortcuts import render,redirect
-from models import User
+from .models import User
 
 def showRegister(request):
     return render(request,"register.html");

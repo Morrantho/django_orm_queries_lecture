@@ -19,5 +19,5 @@ class Post(models.Model):
     text=models.TextField() 
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
-    blog = models.ForeignKey( Blog,related_name="posts" )
-    user = models.ForeignKey( User,related_name="posts" )
+    blog = models.ForeignKey( Blog,related_name="posts",on_delete=models.CASCADE )
+    user = models.ForeignKey( User,related_name="posts",on_delete=models.CASCADE )
