@@ -2,22 +2,13 @@ from __future__ import unicode_literals
 from django.shortcuts import render,redirect
 from .models import User
 
+from django.contrib.messages import get_messages
+
 def showRegister(request):
     return render(request,"register.html");
 
 def register(request):
-    a = request.POST["first"];
-    b  = request.POST["last"];
-    c  = request.POST["email"];
-    d  = request.POST["password"];
-    e  = request.POST["age"];
-
-    User.objects.create(
-        first=a,
-        last=b,
-        email=c,
-        password=d,
-        age=e
-    );
-
+    User.objects.validate(request);
+    if len(get_messages(request)) < 1:
+        User.objects.register(request);
     return redirect("/users");
